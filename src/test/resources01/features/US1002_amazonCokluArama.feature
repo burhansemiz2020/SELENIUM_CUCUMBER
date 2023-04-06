@@ -1,5 +1,5 @@
 Feature: US1002 Kullanici amazon anasayfada birden fazla urun aratir
-  @wip
+
   Scenario: TC02 Kullanici urunleri aratip test edebilmeli
     Given kullanici amazon anasayfaya gider
     Then amazon arama kutusuna Nutella yazip aratir
@@ -14,4 +14,9 @@ Feature: US1002 Kullanici amazon anasayfada birden fazla urun aratir
     Given kullanici amazon anasayfaya gider
     Then amazon arama kutusuna Samsung yazip aratir
     And arama sonuclarinin Samsung icerdigini test eder
+    Then sayfayi kapatir
+
+    Given kullanici amazon anasayfaya gider
+    Then amazon arama kutusuna Apple yazip aratir
+    And arama sonuclarinin Apple icerdigini test eder
     Then sayfayi kapatir

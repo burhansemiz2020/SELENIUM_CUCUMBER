@@ -59,6 +59,48 @@ public class AmazonStepdefinitions {
         Assert.assertTrue(actualAramaSonucu.contains(expectedKelime));
     }
 
+
+
+    @Then("amazon arama kutusuna Apple yazip aratir")
+    public void amazonAramaKutusunaAppleYazipAratir() {
+        amazonPage=new AmazonPage();
+        amazonPage.amazonAramaKutusu.sendKeys("Apple"+ Keys.ENTER);
+    }
+
+    @Then("arama sonuclarinin Apple icerdigini test eder")
+    public void aramaSonuclarininAppleIcerdiginiTestEder() {
+        String actualAramaSonucu=amazonPage.aramaSonucuElementi.getText();
+        String expectedKelime="Apple";
+        Assert.assertTrue(actualAramaSonucu.contains(expectedKelime));
+    }
+
+
+    @Then("amazon arama kutusuna {string} yazip aratir")
+    public void amazonAramaKutusunaYazipAratir(String aranacakKelime) {
+        amazonPage=new AmazonPage();
+        amazonPage.amazonAramaKutusu.sendKeys(aranacakKelime+ Keys.ENTER);
+    }
+
+    @And("arama sonuclarinin {string} icerdigini test eder")
+    public void aramaSonuclarininIcerdiginiTestEder(String arananKelime) {
+        String actualAramaSonucu=amazonPage.aramaSonucuElementi.getText();
+        Assert.assertTrue(actualAramaSonucu.contains(arananKelime));
+    }
+
+
+
+    @Given("kullanici {string} anasayfaya gider")
+    public void kullaniciAnasayfayaGider(String istenenUrl) {
+        Driver.getDriver().get(ConfigReader.getProperty(istenenUrl));
+
+    }
+
+
+    @Then("url de {string} oldugunu test eder")
+    public void urlDeOldugunuTestEder(String arananKelime) {
+        String actualUrl=Driver.getDriver().getCurrentUrl();
+        Assert.assertTrue(actualUrl.contains(arananKelime));
+    }
     @And("{int} saniye bekler")
     public void saniyeBekler(int saniye) {
         try {
